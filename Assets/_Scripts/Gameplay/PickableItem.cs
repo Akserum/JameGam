@@ -1,0 +1,64 @@
+using UnityEngine;
+
+[RequireComponent(typeof(Rigidbody))]
+public class PickableItem : MonoBehaviour, IPickable
+{
+    #region Variables
+    private Rigidbody _rb;
+    private Collider _collider;
+    #endregion
+
+    #region Builts_In
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
+    }
+    #endregion
+
+    #region Interfaces Implementation
+    public void PickUp()
+    {
+        Debug.Log("Pick Up");
+        EnableRbGravity(false);
+        EnableCollider(false);
+    }
+
+    public void Drop()
+    {
+        Debug.Log("Drop");
+        EnableRbGravity(true);
+        EnableCollider(true);
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
+    }
+    #endregion
+
+    #region Methods
+    /// <summary>
+    /// Switch between gravity and kinematic mode on the rigidbody
+    /// </summary>
+    private void EnableRbGravity(bool enabled)
+    {
+        if (!_rb)
+            return;
+
+        _rb.useGravity = enabled;
+        _rb.isKinematic = !enabled;
+    }
+
+    /// <summary>
+    /// Enable or disable object collider
+    /// </summary>
+    private void EnableCollider(bool enabled)
+    {
+        if (!_collider)
+            return;
+
+        _collider.enabled = enabled;
+    }
+    #endregion
+}

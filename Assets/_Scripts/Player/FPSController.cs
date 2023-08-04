@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class FPSController : MonoBehaviour
 {
     #region Variables
-    private Transform _camera;
+    protected Transform _camera;
+    protected PlayerInput _inputs;
     private CharacterController _cc;
-    private PlayerInput _inputs;
 
     #region Motion
     [Header("Motion & View")]
@@ -72,7 +72,7 @@ public class FPSController : MonoBehaviour
     /// <summary>
     /// Enable or disable player inputs
     /// </summary>
-    private void EnableInputs(bool enabled)
+    protected void EnableInputs(bool enabled)
     {
         if (enabled)
             _inputs.ActivateInput();
@@ -83,7 +83,7 @@ public class FPSController : MonoBehaviour
     /// <summary>
     /// Subscribe methods to player actions
     /// </summary>
-    private void SubscribeToInputs()
+    protected virtual void SubscribeToInputs()
     {
         _inputs.currentActionMap.FindAction("Move").performed += OnMove;
         _inputs.currentActionMap.FindAction("Move").canceled += OnMove;
@@ -95,7 +95,7 @@ public class FPSController : MonoBehaviour
     /// <summary>
     /// Unsubscribe methods to player actions
     /// </summary>
-    private void UnsubscribeToInputs()
+    protected virtual void UnsubscribeToInputs()
     {
         _inputs.currentActionMap.FindAction("Move").performed -= OnMove;
         _inputs.currentActionMap.FindAction("Move").canceled -= OnMove;
