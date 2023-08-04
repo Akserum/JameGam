@@ -1,5 +1,6 @@
-using System.Collections.Generic;
+using System;
 using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,24 +9,28 @@ public class InteractingPlayer : FPSController
     #region Variables
     [Header("Inventory Infos")]
     [SerializeField] private Transform inventoryTransform;
-    [SerializeField] private int maxCarriedAmount = 10;
+    [SerializeField] private int maxItemAmount = 10;
 
     [Header("Interact Properties")]
     [SerializeField] private float interactRange = 5f;
     [SerializeField] private LayerMask rayMask;
     private RaycastHit _hitInfo;
+
+    public event Action OnInventoryChanged;
+    public event Action OnSeletectedItemChanged;
     #endregion
 
     #region Properties
-    public PickableItem CurrentItem { get; private set; }
+    public PickableItem SelectedItem { get; private set; }
+    public PickableItem ReachableItem { get; private set; }
     public List<PickableItem> ItemList { get; private set; } = new List<PickableItem>();
+    public int MaxItemAmount => maxItemAmount;
     #endregion
 
     #region Builts_In
     private void FixedUpdate()
     {
-        if (ItemList.Count >= maxCarriedAmount)
-            Debug.Log("Inventory full");
+        GetReachableItems();
     }
 
     private void OnDrawGizmos()
@@ -77,19 +82,13 @@ public class InteractingPlayer : FPSController
     /// </summary>
     private void PickUp()
     {
-        if (ItemList.Count >= maxCarriedAmount)
+        if (ItemList.Count >= maxItemAmount)
             return;
 
-        //Shoot a raycast to check if there's an object
-        Ray ray = new Ray(_camera.position, _camera.forward * interactRange);
-        if (!Physics.Raycast(ray.origin, ray.direction, out _hitInfo, interactRange, rayMask, QueryTriggerInteraction.Collide))
+        if (!ReachableItem)
             return;
 
-        GameObject hitObject = _hitInfo.collider.gameObject;
-        if (!hitObject.TryGetComponent(out PickableItem item))
-            return;
-
-        AddObject(item);
+        AddObject(ReachableItem);
     }
 
     /// <summary>
@@ -97,18 +96,20 @@ public class InteractingPlayer : FPSController
     /// </summary>
     private void Drop()
     {
-        if (!CurrentItem)
+        if (!SelectedItem)
             return;
 
         Vector3 position = _camera.position + _camera.forward * 0.5f;
         Vector3 direction = _camera.forward;
 
-        CurrentItem.gameObject.SetActive(true);
-        CurrentItem.Drop(position, direction);
-        ItemList.RemoveAt(ItemList.FindIndex(x => x == CurrentItem));
+        SelectedItem.gameObject.SetActive(true);
+        SelectedItem.transform.SetParent(null);
+        SelectedItem.Drop(position, direction);
+        ItemList.RemoveAt(ItemList.FindIndex(x => x == SelectedItem));
 
         //Select a new item if possible
         SelectItemOnDrop();
+        RaiseModifiedInventory();
     }
 
     /// <summary>
@@ -124,8 +125,33 @@ public class InteractingPlayer : FPSController
         itemTransform.gameObject.SetActive(false);
 
         //Add it to the list
-        CurrentItem = item;
+        SelectedItem = item;
         ItemList.Add(item);
+
+        //Raise an event
+        RaiseModifiedInventory();
+        RaiseItemSelectionEvent();
+    }
+
+    /// <summary>
+    /// Shoot a raycast and indicates if an item is reachable
+    /// </summary>
+    private void GetReachableItems()
+    {
+        Ray ray = new Ray(_camera.position, _camera.forward * interactRange);
+        //Shoot a raycast and no return
+        if (!Physics.Raycast(ray.origin, ray.direction, out _hitInfo, interactRange, rayMask, QueryTriggerInteraction.Collide))
+            ReachableItem = null;
+
+        if (!_hitInfo.collider)
+            return;
+
+        //Atleast one object hit
+        GameObject hitObject = _hitInfo.collider.gameObject;
+        if (!hitObject.TryGetComponent(out PickableItem item))
+            ReachableItem = null;
+        else
+            ReachableItem = item;
     }
     #endregion
 
@@ -138,7 +164,8 @@ public class InteractingPlayer : FPSController
         if (index < 0 || index >= ItemList.Count)
             return;
 
-        CurrentItem = ItemList.ElementAt(index);
+        SelectedItem = ItemList.ElementAt(index);
+        RaiseItemSelectionEvent();
     }
 
     /// <summary>
@@ -173,7 +200,8 @@ public class InteractingPlayer : FPSController
         //No more objects
         if (ItemList.Count <= 0)
         {
-            CurrentItem = null;
+            SelectedItem = null;
+            RaiseItemSelectionEvent();
             return;
         }
 
@@ -188,9 +216,27 @@ public class InteractingPlayer : FPSController
     /// <summary>
     /// Return current item index in the list
     /// </summary>
-    private int GetCurrentItemIndex()
+    public int GetCurrentItemIndex()
     {
-        return ItemList.FindIndex(x => x == CurrentItem);
+        return ItemList.FindIndex(x => x == SelectedItem);
+    }
+    #endregion
+
+    #region Events Methods
+    /// <summary>
+    /// Raise an event that indicates that the selected item has changed
+    /// </summary>
+    private void RaiseItemSelectionEvent()
+    {
+        OnSeletectedItemChanged?.Invoke();
+    }
+
+    /// <summary>
+    /// Raise an event that indicates player inventory has changed
+    /// </summary>
+    private void RaiseModifiedInventory()
+    {
+        OnInventoryChanged?.Invoke();
     }
     #endregion
 }

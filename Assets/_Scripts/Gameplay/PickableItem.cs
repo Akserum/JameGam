@@ -3,9 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PickableItem : MonoBehaviour, IPickable
 {
-    #region Variables
+    #region Variables/Properties
+    [SerializeField] private ItemSO itemInfos;
+
     private Rigidbody _rb;
     private Collider _collider;
+
+    public ItemSO ItemInfos => itemInfos;
     #endregion
 
     #region Builts_In
