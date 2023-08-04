@@ -19,21 +19,16 @@ public class PickableItem : MonoBehaviour, IPickable
     #region Interfaces Implementation
     public void PickUp()
     {
-        Debug.Log("Pick Up");
         EnableRbGravity(false);
         EnableCollider(false);
     }
 
-    public void Drop()
+    public void Drop(Vector3 position, Vector3 direction)
     {
-        Debug.Log("Drop");
+        transform.position = position;
         EnableRbGravity(true);
         EnableCollider(true);
-    }
-
-    public Transform GetTransform()
-    {
-        return transform;
+        _rb.AddForce(direction, ForceMode.Impulse);
     }
     #endregion
 

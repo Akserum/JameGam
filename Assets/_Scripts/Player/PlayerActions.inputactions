@@ -53,11 +53,20 @@
                 {
                     "name": "Drop",
                     "type": "Button",
-                    "id": "bba71d28-4649-4ac1-a676-c90afdb89cb8",
+                    "id": "19761a30-cef2-4808-8594-95e774717493",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "2fd82b74-0fe8-4dba-aa4a-a1bdbc577668",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -162,14 +171,47 @@
                 },
                 {
                     "name": "",
-                    "id": "7621ceff-cd49-4e22-adb6-4ece6d0b07dd",
-                    "path": "<Keyboard>/g",
+                    "id": "000cac2a-a853-40f6-a110-cd680aed4ecf",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
-                    "groups": "MnK",
+                    "groups": "",
                     "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "b643eb06-d1bd-4dd7-930e-d35b86a060f4",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "43aedd12-606d-4470-bbc2-fc08143f952e",
+                    "path": "<Mouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "12c61ef0-6a65-4ff7-b5d7-a8f6f57b640d",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
