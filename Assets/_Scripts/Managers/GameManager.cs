@@ -1,16 +1,20 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class GameManager : SingletonClass<GameManager>
 {
     #region Variables
     [Header("Game Properties")]
     [SerializeField] private float gameDuration = 180f;
-    [SerializeField] private float timeBonus = 5f;
+    [SerializeField] private float bonusTime = 5f;
+
+    public event Action OnScoreChanged;
     #endregion
 
     #region Properties
     public float Timer { get; private set; }
+    public int Score { get; private set; }
     #endregion
 
     #region Buitls_In
@@ -22,6 +26,7 @@ public class GameManager : SingletonClass<GameManager>
 
     private void Start()
     {
+        SetScore(0);
         StartCoroutine(GameTimerRoutine());
     }
 
@@ -33,6 +38,17 @@ public class GameManager : SingletonClass<GameManager>
     private void OnDisable()
     {
         ScoreZone.OnItemScored -= AddBonusTime;
+    }
+    #endregion
+
+    #region Methods
+    /// <summary>
+    /// Set score value
+    /// </summary>
+    private void SetScore(int value)
+    {
+        Score = value;
+        OnScoreChanged?.Invoke();
     }
     #endregion
 
@@ -56,8 +72,7 @@ public class GameManager : SingletonClass<GameManager>
     /// </summary>
     private void AddBonusTime(ItemSO item)
     {
-        Debug.Log("Bonus time!");
-        Timer += timeBonus;
+        Timer += bonusTime;
     }
     #endregion
 }

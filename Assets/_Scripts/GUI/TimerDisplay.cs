@@ -56,7 +56,7 @@ public class TimerDisplay : MonoBehaviour
     /// </summary>
     private void HandleTextColor()
     {
-        Color color = _gameManager.Timer < 60 ? lowColor : baseColor;
+        Color color = _gameManager.Timer <= 59 ? lowColor : baseColor;
         _textMesh.color = color;
     }
     #endregion
