@@ -1,6 +1,7 @@
 using UnityEngine;
+using System.Linq;
 using System.Collections;
-using System;
+using System.Collections.Generic;
 
 public class GameManager : SingletonClass<GameManager>
 {
@@ -9,15 +10,20 @@ public class GameManager : SingletonClass<GameManager>
     [SerializeField] private float gameDuration = 180f;
     [SerializeField] private float bonusTime = 5f;
 
-    public event Action OnScoreChanged;
+    [Header("Game Items options")]
+    [SerializeField] private ItemDataBase itemDataBase;
+    [SerializeField] private int requiredItemsAmount = 2;
+
+    public event System.Action OnScoreChanged;
     #endregion
 
     #region Properties
     public float Timer { get; private set; }
     public int Score { get; private set; }
+    public ItemSO[] RequiredItems { get; private set; }
     #endregion
 
-    #region Buitls_In
+    #region Builts_In
     protected override void Awake()
     {
         base.Awake();
@@ -27,6 +33,7 @@ public class GameManager : SingletonClass<GameManager>
     private void Start()
     {
         SetScore(0);
+        SelectRandomItems();
         StartCoroutine(GameTimerRoutine());
     }
 
@@ -41,7 +48,7 @@ public class GameManager : SingletonClass<GameManager>
     }
     #endregion
 
-    #region Methods
+    #region Score Methods
     /// <summary>
     /// Set score value
     /// </summary>
@@ -73,6 +80,31 @@ public class GameManager : SingletonClass<GameManager>
     private void AddBonusTime(ItemSO item)
     {
         Timer += bonusTime;
+    }
+    #endregion
+
+    #region Game Item Methods
+    /// <summary>
+    /// Select randomly a given amount of items in the database
+    /// </summary>
+    private void SelectRandomItems()
+    {
+        List<ItemSO> datas = itemDataBase.Items.ToList();
+        RequiredItems = new ItemSO[requiredItemsAmount];
+
+        for (int i = 0; i < RequiredItems.Length; i++)
+        {
+            int index = Random.Range(0, datas.Count);
+            ItemSO item = datas.ElementAt(index);
+
+            if (!item)
+                return;
+
+            RequiredItems[i] = item;
+            datas.RemoveAt(index);
+        }
+
+        datas.Clear();
     }
     #endregion
 }
