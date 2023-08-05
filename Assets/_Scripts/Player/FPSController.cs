@@ -31,7 +31,6 @@ public class FPSController : MonoBehaviour
     #region Physics
     [Header("Physics")]
     [SerializeField] private float gravity = 3f;
-    [SerializeField] private float maxHorizontalVel = 20f;
     #endregion
 
     #endregion
