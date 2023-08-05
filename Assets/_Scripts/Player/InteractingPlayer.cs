@@ -13,6 +13,8 @@ public class InteractingPlayer : FPSController
 
     [Header("Interact Properties")]
     [SerializeField] private float interactRange = 5f;
+    [SerializeField] private float throwDistance = 0.5f;
+    [SerializeField] private float throwForce = 2f;
     [SerializeField] private LayerMask rayMask;
     private RaycastHit _hitInfo;
 
@@ -100,7 +102,7 @@ public class InteractingPlayer : FPSController
             return;
 
         Vector3 position = _camera.position + _camera.forward * 0.5f;
-        Vector3 direction = _camera.forward;
+        Vector3 direction = _camera.forward * throwDistance * throwForce;
 
         SelectedItem.gameObject.SetActive(true);
         SelectedItem.transform.SetParent(null);

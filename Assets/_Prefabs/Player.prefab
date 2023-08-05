@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4413855240855095384}
   - component: {fileID: 5398145274318596266}
   - component: {fileID: 5398145274318596267}
-  m_Layer: 4
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,6 +144,8 @@ MonoBehaviour:
   inventoryTransform: {fileID: 7950139922295286507}
   maxItemAmount: 10
   interactRange: 5
+  throwDistance: 2.5
+  throwForce: 2
   rayMask:
     serializedVersion: 2
     m_Bits: 128
