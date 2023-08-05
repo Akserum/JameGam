@@ -1,0 +1,155 @@
+#File written by RizomUV 2020.0.89.gadc9742. Compilation :May  5 2020,11:18:49
+mtllib 
+#begin vertices
+v -626.1509 -0 -1082.921
+v -627.6715 -0 -1213.221
+v -1096.769 -0 -1214.947
+v -1100.755 -0 -639.5684
+v -1049.766 -0 -639.5684
+v -1049.766 -0 762.6873
+v -1079.508 -0 762.6873
+v -1079.508 -0 1606.873
+v -619.1675 -0 1606.873
+v -601.9487 -0 1213.103
+v 769.7851 -0 1213.103
+v 788.7606 -0 1606.87
+v 1250.516 -0 1606.87
+v 1250.516 -0 758.4248
+v 1216.514 -0 758.4248
+v 1216.514 -0 -646.6754
+v 1266.089 -0 -646.6754
+v 1266.089 -0 -1217.495
+v 788.7529 -0 -1217.495
+v 788.1965 -0 -1078.598
+v -620.5399 -0 761.88
+v 788.6488 -0 759.2296
+v -624.8065 -0 -640.9009
+v 788.3032 -0 -645.3325
+#end vertices
+
+#begin 24 textures vertices 
+vt 0.1673064 0.9462711 0
+vt 0.1664574 0.9919591 0
+vt 0.001956827 0.9914275 0
+vt 0.001953125 0.7896522 0
+vt 0.01983351 0.7897758 0
+vt 0.02323147 0.2980525 0
+vt 0.01280172 0.2979804 0
+vt 0.01484736 0.001953125 0
+vt 0.1762732 0.003068628 0
+vt 0.1813571 0.141192 0
+vt 0.6623774 0.144516 0
+vt 0.6699856 0.006481456 0
+vt 0.8319075 0.007600386 0
+vt 0.8298515 0.3051212 0
+vt 0.8179281 0.3050389 0
+vt 0.8145232 0.7977596 0
+vt 0.8319075 0.7978797 0
+vt 0.8305242 0.9980469 0
+vt 0.6631389 0.99689 0
+vt 0.6632803 0.9481822 0
+vt 0.1737443 0.2993757 0
+vt 0.6678924 0.3037198 0
+vt 0.168849 0.7912728 0
+vt 0.6643676 0.7962511 0
+#end 24 textures vertices 
+
+#begin 52 normals 
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+vn 0 1 -0
+#end 52 normals 
+
+#begin 13 faces
+o Floor
+g Floor
+s 1
+f 14/14/1 15/15/2 12/12/3 13/13/4 
+f 2/2/5 3/3/6 4/4/7 5/5/8 
+f 6/6/9 7/7/10 8/8/11 9/9/12 
+f 5/5/13 23/23/14 1/1/15 2/2/16 
+f 20/20/17 1/1/18 23/23/19 24/24/20 
+f 16/16/21 17/17/22 18/18/23 19/19/24 
+f 16/16/25 19/19/26 20/20/27 24/24/28 
+f 6/6/29 9/9/30 10/10/31 21/21/32 
+f 21/21/33 10/10/34 11/11/35 22/22/36 
+f 22/22/37 11/11/38 12/12/39 15/15/40 
+f 5/5/41 6/6/42 21/21/43 23/23/44 
+f 23/23/45 21/21/46 22/22/47 24/24/48 
+f 24/24/49 22/22/50 15/15/51 16/16/52 
+#end 13 faces
+
+#ZOMPROPERTIES_03 {
+#ZOMPROPERTIES_03 table {Mesh table {SymPlane table {Point vector3d 0 0 0 Normal vector3d 1 0 0 Threshold double 0.01 
+#ZOMPROPERTIES_03 Enabled bool false EdgeID int -1 SymEdgeID int -1 UPos double 0.5 LocalMode bool false } RootGroup C
+#ZOMPROPERTIES_03 SubMeshGroup {Children table {Tile_0_0 CSubMeshGroup {Children table {} BBoxUV box3d 0 0 0 0 0 0 BBo
+#ZOMPROPERTIES_03 x3D box3d 0 0 0 0 0 0 AreaUV double 0.709424 Area3D double 0 IsRoot bool false TopoStable table {Sel
+#ZOMPROPERTIES_03 ected bool false Box box3d 0 1 0 1 0 1 U int 0 V int 0 NU int 0 NV int 0 Tiling vector3d 1 1 1 TileR
+#ZOMPROPERTIES_03 atioMode string "1:1" } IsTile bool true PolyIDs ints { 0 9 8 7 2 10 3 4 6 5 12 1 11 } } } BBoxUV bo
+#ZOMPROPERTIES_03 x3d 0 0 0 0 0 0 BBox3D box3d 0 0 0 0 0 0 AreaUV double 0 Area3D double 0 IsRoot bool true TopoStable
+#ZOMPROPERTIES_03  table {Selected bool false Box box3d 0 1 0 1 0 1 U int 0 V int 0 NU int 1 NV int 1 Tiling vector3d 
+#ZOMPROPERTIES_03 1 1 1 TileRatioMode string "1:1" Pack table {Rotate table {Mode int 2 Min double 0 Max double 180 St
+#ZOMPROPERTIES_03 ep double 0 } SpacingSize double 0.00390625 MarginSize double 0.00195312 Resolution int 200 Scaling 
+#ZOMPROPERTIES_03 table {Mode int 0 } LayoutScalingMode int 2 MaxMutations int 1 } } IsTile bool false PolyIDs ints { 
+#ZOMPROPERTIES_03 } } Maps table {Density table {PrimType string "Polygon" Size int 1 DefaultValue double 1 ScaleType 
+#ZOMPROPERTIES_03 string "Log" MergeMode string "Average" MinValue double 0.1 MaxValue double 4 Data doubles { r 13 1 
+#ZOMPROPERTIES_03 } } Pin table {PrimType string "Vertex" Size int 1 DefaultValue double 0 ScaleType string "Normalize
+#ZOMPROPERTIES_03 d" MergeMode string "Max" MinValue double 0 MaxValue double 1 Data doubles { r 24 0 } } Protect tabl
+#ZOMPROPERTIES_03 e {PrimType string "Vertex" Size int 1 DefaultValue double 0 ScaleType string "Normalized" MergeMode
+#ZOMPROPERTIES_03  string "Average" MinValue double -1 MaxValue double 1 Data doubles { r 24 0 } } } } }
+#ZOMPROPERTIES_03 }
+
+#begin 0 fatal error vertex (that RizomUV cannot handle)
+#end 0 fatal error vertex (that RizomUV cannot handle)
+
+#begin 0 error vertex
+#end 0 error vertex
