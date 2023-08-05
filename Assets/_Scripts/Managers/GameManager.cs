@@ -28,22 +28,24 @@ public class GameManager : SingletonClass<GameManager>
     {
         base.Awake();
         Timer = gameDuration;
+        SelectRandomItems();
     }
 
     private void Start()
     {
         SetScore(0);
-        SelectRandomItems();
         StartCoroutine(GameTimerRoutine());
     }
 
     private void OnEnable()
     {
+        ScoreZone.OnItemScored += AddScore;
         ScoreZone.OnItemScored += AddBonusTime;
     }
 
     private void OnDisable()
     {
+        ScoreZone.OnItemScored -= AddScore;
         ScoreZone.OnItemScored -= AddBonusTime;
     }
     #endregion
@@ -56,6 +58,15 @@ public class GameManager : SingletonClass<GameManager>
     {
         Score = value;
         OnScoreChanged?.Invoke();
+    }
+
+    /// <summary>
+    /// Add score when scoring an item
+    /// </summary>
+    private void AddScore(ItemSO item)
+    {
+        int score = Score + item.Score;
+        SetScore(score);
     }
     #endregion
 
@@ -105,6 +116,22 @@ public class GameManager : SingletonClass<GameManager>
         }
 
         datas.Clear();
+    }
+
+    /// <summary>
+    /// Indicates if the given item is required
+    /// </summary>
+    public bool HasItemInList(ItemSO Item)
+    {
+        foreach (ItemSO item in RequiredItems)
+        {
+            if (item == Item)
+                return true;
+            else
+                continue;
+        }
+
+        return false;
     }
     #endregion
 }
