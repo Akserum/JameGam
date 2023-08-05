@@ -38,7 +38,7 @@ public class SingletonClass<T> : MonoBehaviour where T : MonoBehaviour
     #endregion
 
     #region Methods
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         if (Instance != null && Instance != this)
         {

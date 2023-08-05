@@ -7,6 +7,7 @@ public class PlayerGUI : MonoBehaviour
     #region Variables
     [Header("Slots properties")]
     [SerializeField] private TextMeshProUGUI nameField;
+    [SerializeField] private TextMeshProUGUI interactField;
     [SerializeField] private Transform slotParent;
     [SerializeField] private ItemSlot slotPrefab;
     [SerializeField] private Color slotColor = Color.black;
@@ -27,6 +28,11 @@ public class PlayerGUI : MonoBehaviour
     {
         CreateSlots();
         FillSlots();
+    }
+
+    private void FixedUpdate()
+    {
+        ShowReachableItem();
     }
 
     private void OnEnable()
@@ -80,13 +86,18 @@ public class PlayerGUI : MonoBehaviour
     /// </summary>
     private void ShowSelectedItem()
     {
-        string name = _player.SelectedItem ? _player.SelectedItem.ItemInfos.ItemName : "";
         int index = _player.GetCurrentItemIndex();
+        string text = "";
+        if (_player.SelectedItem)
+        {
+            ItemSO item = _player.SelectedItem.ItemInfos;
+            text = $"{item.ItemName} (Valeur : {item.Score})";
+        }
 
         //Update text
-        nameField.text = name;
+        nameField.text = text;
 
-        //Select a new slot
+        //Reset the last slot
         if (_selectedSlot)
             SetSlotColor(_selectedSlot, false);
         
@@ -96,6 +107,21 @@ public class PlayerGUI : MonoBehaviour
             _selectedSlot = _slots[index];
             SetSlotColor(_selectedSlot, true);
         }
+    }
+
+    /// <summary>
+    /// Indicates when an object can be collected
+    /// </summary>
+    private void ShowReachableItem()
+    {
+        string text = "";
+        if (_player.ReachableItem)
+        {
+            ItemSO item = _player.ReachableItem.ItemInfos;
+            text = "Grab " + $"<b><i>{item.ItemName}</i></b> " + $"(Valeur : <b><i>{item.Score}</i></b>)";
+        }
+
+        interactField.text = text;
     }
 
     /// <summary>
