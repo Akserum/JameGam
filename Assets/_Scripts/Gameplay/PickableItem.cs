@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(ObjectCollisions))]
 public class PickableItem : MonoBehaviour, IPickable
 {
     #region Variables/Properties
@@ -8,6 +9,7 @@ public class PickableItem : MonoBehaviour, IPickable
 
     private Rigidbody _rb;
     private Collider _collider;
+    private ObjectCollisions _collisionHandler;
 
     public ItemSO ItemInfos => itemInfos;
     #endregion
@@ -17,6 +19,7 @@ public class PickableItem : MonoBehaviour, IPickable
     {
         _rb = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        _collisionHandler = GetComponent<ObjectCollisions>();
     }
     #endregion
 
@@ -32,6 +35,7 @@ public class PickableItem : MonoBehaviour, IPickable
         transform.position = position;
         EnableRbGravity(true);
         EnableCollider(true);
+        _collisionHandler.AvoidCollision(true);
         _rb.AddForce(direction, ForceMode.Impulse);
     }
     #endregion
