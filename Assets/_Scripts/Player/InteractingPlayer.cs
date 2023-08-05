@@ -180,10 +180,10 @@ public class InteractingPlayer : FPSController
 
         //Atleast one object hit
         GameObject hitObject = _hitInfo.collider.gameObject;
-        if (!hitObject.TryGetComponent(out PickableItem item))
-            ReachableItem = null;
-        else
+        if (hitObject.TryGetComponent(out PickableItem item) && item.IsPickable)
             ReachableItem = item;
+        else
+            ReachableItem = null;
     }
     #endregion
 

@@ -11,6 +11,7 @@ public class PickableItem : MonoBehaviour, IPickable
     private Collider _collider;
     private ObjectCollisions _collisionHandler;
 
+    public bool IsPickable = true;
     public ItemSO ItemInfos => itemInfos;
     #endregion
 
@@ -62,6 +63,15 @@ public class PickableItem : MonoBehaviour, IPickable
             return;
 
         _collider.enabled = enabled;
+    }
+
+    /// <summary>
+    /// Enable or disable the pick up
+    /// </summary>
+    public void BlockItem()
+    {
+        _collisionHandler.enabled = false;
+        gameObject.layer = LayerMask.NameToLayer("Default");
     }
     #endregion
 }

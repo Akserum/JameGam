@@ -36,8 +36,10 @@ public class ScoreZone : MonoBehaviour
             return;
 
         Debug.Log($"New item : {item.ItemInfos.ItemName} : {item.ItemInfos.Score}");
+
         _scoredItems.Add(item);
         OnItemScored?.Invoke(item.ItemInfos);
+        item.BlockItem();
     }
     #endregion
 }

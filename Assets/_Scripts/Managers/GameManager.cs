@@ -5,7 +5,8 @@ public class GameManager : SingletonClass<GameManager>
 {
     #region Variables
     [Header("Game Properties")]
-    [SerializeField] private float gameDuration = 180;
+    [SerializeField] private float gameDuration = 180f;
+    [SerializeField] private float timeBonus = 5f;
     #endregion
 
     #region Properties
@@ -23,9 +24,19 @@ public class GameManager : SingletonClass<GameManager>
     {
         StartCoroutine(GameTimerRoutine());
     }
+
+    private void OnEnable()
+    {
+        ScoreZone.OnItemScored += AddBonusTime;
+    }
+
+    private void OnDisable()
+    {
+        ScoreZone.OnItemScored -= AddBonusTime;
+    }
     #endregion
 
-    #region Methods
+    #region Time Methods
     /// <summary>
     /// Handle game time
     /// </summary>
@@ -38,6 +49,15 @@ public class GameManager : SingletonClass<GameManager>
         }
 
         //Raise end game
+    }
+
+    /// <summary>
+    /// Add a given amount of time to the current timer
+    /// </summary>
+    private void AddBonusTime(ItemSO item)
+    {
+        Debug.Log("Bonus time!");
+        Timer += timeBonus;
     }
     #endregion
 }

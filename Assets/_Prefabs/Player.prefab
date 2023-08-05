@@ -94,12 +94,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5398145274318596264}
   - component: {fileID: 4413855240855095384}
-  - component: {fileID: 223960998}
+  - component: {fileID: 2432590594226227862}
   - component: {fileID: 5398145274318596266}
   - component: {fileID: 5398145274318596267}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   rayMask:
     serializedVersion: 2
     m_Bits: 384
---- !u!114 &223960998
+--- !u!114 &2432590594226227862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4ce29ab05b053468f1021a4d24c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMagnitude: 0.25
+  forceMagnitude: 0.1
   pushable:
     serializedVersion: 2
     m_Bits: 128
