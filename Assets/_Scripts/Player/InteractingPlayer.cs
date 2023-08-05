@@ -51,7 +51,8 @@ public class InteractingPlayer : FPSController
     {
         base.SubscribeToInputs();
         _inputs.currentActionMap.FindAction("PickUp").started += OnPickUp;
-        _inputs.currentActionMap.FindAction("Drop").started += OnDrop;
+        _inputs.currentActionMap.FindAction("Drop").performed += OnDrop;
+        _inputs.currentActionMap.FindAction("DropAll").performed += OnDropAll;
         _inputs.currentActionMap.FindAction("Scroll").started += OnScroll;
     }
 
@@ -59,12 +60,14 @@ public class InteractingPlayer : FPSController
     {
         base.UnsubscribeToInputs();
         _inputs.currentActionMap.FindAction("PickUp").started -= OnPickUp;
-        _inputs.currentActionMap.FindAction("Drop").started -= OnDrop;
+        _inputs.currentActionMap.FindAction("Drop").performed -= OnDrop;
+        _inputs.currentActionMap.FindAction("DropAll").performed -= OnDropAll;
         _inputs.currentActionMap.FindAction("Scroll").started -= OnScroll;
     }
 
     private void OnPickUp(InputAction.CallbackContext ctx) { PickUp(); }
     private void OnDrop(InputAction.CallbackContext ctx) { Drop(); }
+    private void OnDropAll(InputAction.CallbackContext ctx) { DropAll(); }
 
     private void OnScroll(InputAction.CallbackContext ctx)
     {
@@ -94,23 +97,34 @@ public class InteractingPlayer : FPSController
     }
 
     /// <summary>
-    /// Throw the object towards the player
+    /// Drop the item and raise events to refresh GUI
     /// </summary>
     private void Drop()
     {
-        if (!SelectedItem)
-            return;
-
-        Vector3 position = _camera.position + _camera.forward * 0.5f;
-        Vector3 direction = _camera.forward * throwDistance * throwForce;
-
-        SelectedItem.gameObject.SetActive(true);
-        SelectedItem.transform.SetParent(null);
-        SelectedItem.Drop(position, direction);
+        DropItem();
         ItemList.RemoveAt(ItemList.FindIndex(x => x == SelectedItem));
 
         //Select a new item if possible
         SelectItemOnDrop();
+        RaiseModifiedInventory();
+    }
+
+    /// <summary>
+    /// Drop all the objects in the inventory
+    /// </summary>
+    private void DropAll()
+    {
+        //Drop all item in front of the player
+        foreach (PickableItem item in ItemList)
+        {
+            SelectedItem = item;
+            DropItem();
+        }
+
+        ItemList.Clear();
+        SelectedItem = null;
+
+        RaiseItemSelectionEvent();
         RaiseModifiedInventory();
     }
 
@@ -133,6 +147,22 @@ public class InteractingPlayer : FPSController
         //Raise an event
         RaiseModifiedInventory();
         RaiseItemSelectionEvent();
+    }
+
+    /// <summary>
+    /// Throw the object towards the player
+    /// </summary>
+    private void DropItem()
+    {
+        if (!SelectedItem)
+            return;
+
+        Vector3 position = _camera.position + _camera.forward * 0.5f;
+        Vector3 direction = throwDistance * throwForce * _camera.forward;
+
+        SelectedItem.gameObject.SetActive(true);
+        SelectedItem.transform.SetParent(null);
+        SelectedItem.Drop(position, direction);
     }
 
     /// <summary>

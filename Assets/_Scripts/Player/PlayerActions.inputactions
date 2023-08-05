@@ -56,7 +56,16 @@
                     "id": "19761a30-cef2-4808-8594-95e774717493",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DropAll",
+                    "type": "Button",
+                    "id": "66c1c56b-0cf8-453a-b003-f11f6c959f4c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -212,6 +221,17 @@
                     "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "c1203474-40c1-4fe6-9332-0cd688b61d73",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MnK",
+                    "action": "DropAll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
