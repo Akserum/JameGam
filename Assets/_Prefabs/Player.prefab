@@ -149,7 +149,7 @@ MonoBehaviour:
   throwForce: 2
   rayMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!114 &223960998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4ce29ab05b053468f1021a4d24c27f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMagnitude: 0.5
+  forceMagnitude: 0.25
   pushable:
     serializedVersion: 2
     m_Bits: 128
