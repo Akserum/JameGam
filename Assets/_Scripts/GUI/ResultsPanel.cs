@@ -41,8 +41,8 @@ public class ResultsPanel : MonoBehaviour
         //Infos game time
         results += $"Remaining time: {remainMin}m {remainSec}s." + "\r\n";
         //Infos bonus/malus
-        string bonus = bonusMin <= 0 ? $"{bonusSec}s": $"{bonusMin}m {bonusSec}s"; 
-        string malus = malusMin <= 0 ? $"{malusSec}s": $"{malusMin}m {malusSec}s";
+        string bonus = bonusMin <= 0 ? $"{bonusSec}s" : $"{bonusMin}m {bonusSec}s";
+        string malus = malusMin <= 0 ? $"{malusSec}s" : $"{malusMin}m {malusSec}s";
         results += $"Bonus time: {bonus}." + "\r\n";
         results += $"Penalty time: {malus}.";
 
@@ -56,6 +56,8 @@ public class ResultsPanel : MonoBehaviour
     /// <returns></returns>
     private string GetTitle()
     {
+        if (_gm.PlayerHasBeenSeen) 
+            return "<b>YOU HAVE BEEN SEEN</b> \r\n You will do better next time !";
         if (_gm.Timer > 0)
             return "<b>VICTORY</b> \r\n Perfect! You did a great job!";
 

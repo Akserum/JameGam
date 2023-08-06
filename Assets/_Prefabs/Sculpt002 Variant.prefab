@@ -15,17 +15,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a6699bbaa45f8014f85a112969f69989,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.650589
+      value: -0.058099747
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6699bbaa45f8014f85a112969f69989,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.027827501
+      value: 1.5278274
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6699bbaa45f8014f85a112969f69989,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.659381
+      value: 0.09499931
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6699bbaa45f8014f85a112969f69989,
         type: 3}
@@ -35,7 +35,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a6699bbaa45f8014f85a112969f69989,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a6699bbaa45f8014f85a112969f69989,
         type: 3}
@@ -62,10 +62,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6245087519248890156, guid: a6699bbaa45f8014f85a112969f69989,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a6699bbaa45f8014f85a112969f69989,
         type: 3}
       propertyPath: m_Name
       value: Sculpt002
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a6699bbaa45f8014f85a112969f69989,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6522836199031101566, guid: a6699bbaa45f8014f85a112969f69989,
         type: 3}
@@ -74,3 +84,68 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1b37f30696652f54595433f9eada7da6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6699bbaa45f8014f85a112969f69989, type: 3}
+--- !u!1 &9049932804294558497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a6699bbaa45f8014f85a112969f69989,
+    type: 3}
+  m_PrefabInstance: {fileID: 8166917551736815216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &8256652328003599666
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049932804294558497}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8256652328003599663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049932804294558497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8977394, y: 1.235566, z: 1.6623325}
+  m_Center: {x: -0.0069999695, y: 0.5592002, z: 0.14505672}
+--- !u!114 &8256652328003599664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049932804294558497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efd199155d139a4b999de514f1e4a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemInfos: {fileID: 11400000, guid: 5a01f952432fd3042aaff2ef71bb93e5, type: 2}
+--- !u!114 &8256652328003599665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049932804294558497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f847f5b084ffb4d8543848fd6af10e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseLayer: Item
+  insidePlayer: InsidePlayer
+  showHelpers: 1
+  offset: {x: -0.006999969, y: 0.5592002, z: 0.1450567}
+  size: {x: 1.897739, y: 1.235566, z: 1.662333}

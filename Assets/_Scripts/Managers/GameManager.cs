@@ -33,6 +33,7 @@ public class GameManager : SingletonClass<GameManager>
     public ItemSO[] RequiredItems { get; private set; }
     public List<PickableItem> ScoredItems { get; set; } = new List<PickableItem>();
     public PickableItem[] AllItems { get; private set; }
+    public bool PlayerHasBeenSeen { get; set; }
     #endregion
 
     #region Builts_In
@@ -80,7 +81,7 @@ public class GameManager : SingletonClass<GameManager>
     /// <summary>
     /// End game method
     /// </summary>
-    private void EndGame()
+    public void EndGame()
     {
         if (Timer > 0)
             StopCoroutine(nameof(GameTimerRoutine));
@@ -154,7 +155,7 @@ public class GameManager : SingletonClass<GameManager>
     /// <summary>
     /// Remove a certain amount of seconds to the game timer
     /// </summary>
-    private void RemoveTime()
+    public void RemoveTime()
     {
         Timer -= malusTime;
         TotalMalusTime += malusTime;

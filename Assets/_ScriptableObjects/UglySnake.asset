@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0321be22b8354c942ab9c981634b35cb, type: 3}
-  m_Name: Cube_01
+  m_Name: UglySnake
   m_EditorClassIdentifier: 
-  itemName: Cube01
+  itemName: Ugly Snake
   score: 100
-  icon: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
+  icon: {fileID: 21300000, guid: ab50ed6660b9d6f4db990e70cbe3f747, type: 3}
+  prefab: {fileID: 9049932804294558497, guid: de242f9308b3f704dbffce604e1f0509, type: 3}

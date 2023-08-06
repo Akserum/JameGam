@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0321be22b8354c942ab9c981634b35cb, type: 3}
-  m_Name: Cube_02
+  m_Name: Metal rope
   m_EditorClassIdentifier: 
-  itemName: Cube02
-  score: 200
-  icon: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  itemName: Metal Rope
+  score: 100
+  icon: {fileID: 21300000, guid: eb981d6bef6a0b44ea3465d16639a8a9, type: 3}
+  prefab: {fileID: 9049932804294558497, guid: de242f9308b3f704dbffce604e1f0509, type: 3}

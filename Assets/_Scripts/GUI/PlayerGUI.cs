@@ -9,7 +9,7 @@ public class PlayerGUI : MonoBehaviour
     [Header("Slots properties")]
     [SerializeField] private TextMeshProUGUI nameField;
     [SerializeField] private TextMeshProUGUI interactField;
-    [SerializeField] private Image escapeEffect;
+    [SerializeField] private TextMeshProUGUI itemsRemainingField;
     [SerializeField] private Transform slotParent;
     [SerializeField] private ItemSlot slotPrefab;
     [SerializeField] private Color slotColor = Color.black;
@@ -30,31 +30,26 @@ public class PlayerGUI : MonoBehaviour
     {
         CreateSlots();
         FillSlots();
+        ShowRemainingItems();
     }
 
     private void FixedUpdate()
     {
         ShowReachableItem();
-        ShowWhenEscaping();
     }
 
     private void OnEnable()
     {
         _player.OnInventoryChanged += FillSlots;
         _player.OnSeletectedItemChanged += ShowSelectedItem;
+        GameManager.Instance.OnScoreChanged += ShowRemainingItems;
     }
 
     private void OnDisable()
     {
         _player.OnInventoryChanged -= FillSlots;
         _player.OnSeletectedItemChanged -= ShowSelectedItem;
-    }
-    #endregion
-
-    #region Methods
-    private void ShowWhenEscaping()
-    {
-
+        GameManager.Instance.OnScoreChanged -= ShowRemainingItems;
     }
     #endregion
 
@@ -141,6 +136,13 @@ public class PlayerGUI : MonoBehaviour
     {
         Color color = selected ? selectedColor : slotColor;
         slot.SetColor(color);
+    }
+    #endregion
+
+    #region Methods
+    private void ShowRemainingItems()
+    {
+        itemsRemainingField.text = "Remaining Items : " + (GameManager.Instance.AllItems.Length - GameManager.Instance.ScoredItems.Count);
     }
     #endregion
 }

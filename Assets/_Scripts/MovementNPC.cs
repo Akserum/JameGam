@@ -12,6 +12,7 @@ public class MovementNPC : MonoBehaviour
 
     [SerializeField]
     private List<Transform> destinations;
+    private int currentDestination;
 
     [SerializeField]
     private float timerStandingStill = 4f;
@@ -24,6 +25,22 @@ public class MovementNPC : MonoBehaviour
     {
         _animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        currentDestination = 0;
+        GivenDestinations();
+    }
+
+    private void GivenDestinations()
+    {
+        if (destinations.Count == currentDestination)
+        {
+            currentDestination = 0;
+        }
+        agent.destination = destinations[currentDestination].position;
+        destination = destinations[currentDestination];
+        currentDestination++;
+    }
+    private void FindRandomDestination()
+    {
         GameObject[] destGo = GameObject.FindGameObjectsWithTag("Destination");
         for (int i = 0; i < destGo.Length; i++)
         {
@@ -37,9 +54,15 @@ public class MovementNPC : MonoBehaviour
         UpdateAnimations();
     }
 
-    private IEnumerator waiter()
+    private IEnumerator waiterRandomize()
     {
         RandomizeDestination();
+        yield return new WaitForSeconds(timerStandingStill);
+        agent.isStopped = false;
+    }
+    private IEnumerator waiterSetup()
+    {
+        GivenDestinations();
         yield return new WaitForSeconds(timerStandingStill);
         agent.isStopped = false;
     }
@@ -59,8 +82,7 @@ public class MovementNPC : MonoBehaviour
         if (other.transform.position == destination.transform.position)
         {
             agent.isStopped = true;
-            print("arrivé");
-            StartCoroutine(waiter());
+            StartCoroutine(waiterSetup());
         }
     }
 

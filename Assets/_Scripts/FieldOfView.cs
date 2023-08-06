@@ -16,13 +16,18 @@ public class FieldOfView : MonoBehaviour
 
     public bool canSeePlayer;
     public bool sawPlayer;
+    private float timingLose = 2f;
 
+    private readonly static float INITIAL_TIME_NEEDED = 2f;
+    private float timer = 0;
+
+    public GameObject indicatorPlayerSeen;
     //anims 
     [SerializeField]
     //private GameObject _worldSpaceCanvas;
 
     private MovementNPC _movementNpc;
-    private Animator _animator;
+    //private Animator _animator;
     private float _basedRadius;
 
     private void Start()
@@ -32,7 +37,7 @@ public class FieldOfView : MonoBehaviour
         //set the based radius
         _basedRadius = radius;
         //anims
-        _animator = GetComponentInChildren<Animator>();
+        //_animator = GetComponentInChildren<Animator>();
         _movementNpc = GetComponent<MovementNPC>();
         //_worldSpaceCanvas.SetActive(false);
     }
@@ -62,33 +67,59 @@ public class FieldOfView : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
+                    SpottedPlayer();
                     canSeePlayer = true;
+                }
                 else
+                {
                     canSeePlayer = false;
+                }
             }
             else
+            {
                 canSeePlayer = false;
+            }
         }
         else if (canSeePlayer)
+        {
             canSeePlayer = false;
+        }
     }
 
-    // fonction a appeller dans le gameManager
     public void SpottedPlayer()
     {
-        sawPlayer = true;
-        Debug.Log("je te vois");
-        _animator.SetTrigger("Spotted");
-        //_worldSpaceCanvas.SetActive(true);
-        radius = 0;
+        if (canSeePlayer)
+        {
+            return;
+        }
+        StartCoroutine(SpottedPlayerCoroutine());
+
+    }
+    private IEnumerator SpottedPlayerCoroutine()
+    {
+        indicatorPlayerSeen.SetActive(true);
         _movementNpc.agent.isStopped = true;
+        GameManager.Instance.RemoveTime();
+        print("appel coroutine");
+        yield return new WaitForSeconds(INITIAL_TIME_NEEDED);
+        if (canSeePlayer)
+        {
+            GameManager.Instance.PlayerHasBeenSeen = true;
+            GameManager.Instance.EndGame();
+        }
+        else
+        {
+            indicatorPlayerSeen.SetActive(false);
+            _movementNpc.agent.isStopped = false;
+        }
     }
 
     // fonction dans le script pour les anims events
     public void ResetNpcFov()
     {
         sawPlayer = false;
-        _animator.ResetTrigger("Spotted");
+        //_animator.ResetTrigger("Spotted");
         //_worldSpaceCanvas.SetActive(false);
         radius = _basedRadius;
         _movementNpc.agent.isStopped = false;

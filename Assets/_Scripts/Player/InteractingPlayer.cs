@@ -100,6 +100,7 @@ public class InteractingPlayer : FPSController
     /// </summary>
     private void Drop()
     {
+        if (ItemList.Count <= 0) return;
         DropItem();
         ItemList.RemoveAt(ItemList.FindIndex(x => x == SelectedItem));
 
@@ -113,6 +114,7 @@ public class InteractingPlayer : FPSController
     /// </summary>
     private void DropAll()
     {
+        if (ItemList.Count <= 0) return;
         //Drop all item in front of the player
         foreach (PickableItem item in ItemList)
         {

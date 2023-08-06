@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b061f320c3c08d45a5ed7320f7e49d3, type: 3}
-  m_Name: _Item DataBase
+  m_Script: {fileID: 11500000, guid: 0321be22b8354c942ab9c981634b35cb, type: 3}
+  m_Name: Forest Table
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 5a01f952432fd3042aaff2ef71bb93e5, type: 2}
-  - {fileID: 11400000, guid: a2a0467c41f314c468596d78d2f6cf1b, type: 2}
+  itemName: Forest Table
+  score: 200
+  icon: {fileID: 21300000, guid: a1b9f3c921116fd47bc342a158af6c6e, type: 3}
+  prefab: {fileID: 0}
