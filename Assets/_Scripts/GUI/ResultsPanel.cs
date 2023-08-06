@@ -27,16 +27,17 @@ public class ResultsPanel : MonoBehaviour
     /// </summary>
     private void ShowResults()
     {
+        int requiredItemsAmount = _gm.GetRequiredItemCollected();
         string title = _gm.Timer <= 0 ? "Temps écoulé!" : "Perfect!";
 
-        float totalTime = _gm.GameDuration + _gm.TotalBonusTime - _gm.TotalMalusTime;
+        //Convert times
         TimeConverter.ConvertTime(_gm.Timer, out int remainMin, out int remainSec);
         TimeConverter.ConvertTime(_gm.TotalBonusTime, out int bonusMin, out int bonusSec);
-        TimeConverter.ConvertTime(_gm.TotalBonusTime, out int malusMin, out int malusSec);
+        TimeConverter.ConvertTime(_gm.TotalMalusTime, out int malusMin, out int malusSec);
 
         //Infos game items
-        string results = $"Objets importants : ." + "\r\n";
-        results += $"Objets récupérés : ." + "\r\n";
+        string results = $"Objets importants récupérés : {requiredItemsAmount}/{_gm.RequiredItems.Length}." + "\r\n";
+        results += $"Objets récupérés : {_gm.ScoredItems.Count}/{_gm.AllItems.Length}." + "\r\n";
         //Infos game time
         results += $"Temps restant : {remainMin}m {remainSec}s." + "\r\n";
         //Infos bonus/malus
@@ -45,8 +46,8 @@ public class ResultsPanel : MonoBehaviour
         results += $"Temps bonus : {bonus}." + "\r\n";
         results += $"Temps perdu : {malus}.";
 
-        titleText.SetText(title);
         resultsText.SetText(results);
+        titleText.SetText(title);
     }
     #endregion
 }

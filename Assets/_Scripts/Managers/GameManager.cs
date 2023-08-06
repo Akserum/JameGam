@@ -193,19 +193,22 @@ public class GameManager : SingletonClass<GameManager>
     }
 
     /// <summary>
-    /// Indicates if the given item is required
+    /// Indicates how many required items are collected
     /// </summary>
-    public bool HasItemInList(ItemSO Item)
+    public int GetRequiredItemCollected()
     {
+        int amount = 0;
         foreach (ItemSO item in RequiredItems)
         {
-            if (item == Item)
-                return true;
-            else
+            PickableItem element = ScoredItems.Find(x => x.ItemInfos == item);
+
+            if (!element)
                 continue;
+            else
+                amount++;
         }
 
-        return false;
+        return amount;
     }
     #endregion
 }

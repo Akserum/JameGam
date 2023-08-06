@@ -103,16 +103,8 @@ public class FPSController : MonoBehaviour
         _inputs.currentActionMap.FindAction("Jump").started -= OnJump;
     }
 
-    private void OnMove(InputAction.CallbackContext ctx)
-    {
-        _rawInputs = ctx.ReadValue<Vector2>();
-    }
-
-    private void OnLook(InputAction.CallbackContext ctx)
-    {
-        _lookInputs = ctx.ReadValue<Vector2>();
-    }
-
+    private void OnMove(InputAction.CallbackContext ctx) =>  _rawInputs = ctx.ReadValue<Vector2>();
+    private void OnLook(InputAction.CallbackContext ctx) => _lookInputs = ctx.ReadValue<Vector2>();
     private void OnJump(InputAction.CallbackContext ctx)
     {
         if (!IsGrounded)

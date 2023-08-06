@@ -64,17 +64,17 @@ public abstract class TimeConverter
     /// <param name="seconds"> Seconds in time </param>
     public static void ConvertTime(float time, out int minutes, out int seconds)
     {
-        int m_minutes = Mathf.FloorToInt(time / 60);
-        int m_seconds = Mathf.CeilToInt(time % 60);
+        minutes = Mathf.FloorToInt(time / 60);
+        seconds = Mathf.CeilToInt(time % 60);
 
-        if (m_seconds == 60)
+        if (minutes == 60)
         {
-            m_minutes += 1;
-            m_seconds = 00;
+            minutes += 1;
+            seconds = 00;
         }
 
-        minutes = m_minutes;
-        seconds = m_seconds;
+        minutes = (int)Mathf.Clamp(minutes, 0, Mathf.Infinity);
+        seconds = Mathf.Clamp(seconds, 0, 59);
     }
 }
 #endregion
