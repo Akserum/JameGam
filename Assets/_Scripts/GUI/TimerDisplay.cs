@@ -38,16 +38,7 @@ public class TimerDisplay : MonoBehaviour
     private void DisplayGameTime()
     {
         float time = _gameManager.Timer;
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.CeilToInt(time % 60);
-
-        //Check if minute started
-        if (seconds == 60)
-        {
-            minutes += 1;
-            seconds = 00;
-        }
-
+        TimeConverter.ConvertTime(time, out int minutes, out int seconds);
         _textMesh.text = minutes.ToString("00") + ":" + seconds.ToString("00");
     }
 
@@ -61,3 +52,29 @@ public class TimerDisplay : MonoBehaviour
     }
     #endregion
 }
+
+#region TimeConverter Class
+public abstract class TimeConverter
+{
+    /// <summary>
+    /// Convert a time in minuts, seconds format and return both parameters
+    /// </summary>
+    /// <param name="time"> Duration</param>
+    /// <param name="minutes"> Minutes in time </param>
+    /// <param name="seconds"> Seconds in time </param>
+    public static void ConvertTime(float time, out int minutes, out int seconds)
+    {
+        int m_minutes = Mathf.FloorToInt(time / 60);
+        int m_seconds = Mathf.CeilToInt(time % 60);
+
+        if (m_seconds == 60)
+        {
+            m_minutes += 1;
+            m_seconds = 00;
+        }
+
+        minutes = m_minutes;
+        seconds = m_seconds;
+    }
+}
+#endregion

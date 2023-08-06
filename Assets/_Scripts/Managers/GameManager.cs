@@ -14,7 +14,7 @@ public class GameManager : SingletonClass<GameManager>
     [Header("Game Properties")]
     [SerializeField] private float gameDuration = 180f;
     [SerializeField] private float bonusTime = 5f;
-    [SerializeField] private float timeMalus = 10f;
+    [SerializeField] private float malusTime = 10f;
 
     [Header("Game Items options")]
     [SerializeField] private ItemDataBase itemDataBase;
@@ -24,7 +24,10 @@ public class GameManager : SingletonClass<GameManager>
     #endregion
 
     #region Properties
-    public float Timer { get; private set; }
+    public float Timer { get; private set; } = 0;
+    public float GameDuration => gameDuration;
+    public float TotalBonusTime { get; private set; } = 0;
+    public float TotalMalusTime { get; private set; } = 0;
     public int Score { get; private set; }
     public ItemSO[] RequiredItems { get; private set; }
     #endregion
@@ -120,6 +123,7 @@ public class GameManager : SingletonClass<GameManager>
     private void AddBonusTime(ItemSO item)
     {
         Timer += bonusTime;
+        TotalBonusTime += bonusTime;
     }
 
     /// <summary>
@@ -127,7 +131,8 @@ public class GameManager : SingletonClass<GameManager>
     /// </summary>
     private void RemoveTime()
     {
-        Timer -= timeMalus;
+        Timer -= malusTime;
+        TotalMalusTime += malusTime;
     }
     #endregion
 
