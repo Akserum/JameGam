@@ -3777,6 +3777,16 @@ PrefabInstance:
       propertyPath: walkSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4413855240855095384, guid: f411db620536c574bbefd80b22fb930f,
+        type: 3}
+      propertyPath: rayMask.m_Bits
+      value: 392
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413855240855095384, guid: f411db620536c574bbefd80b22fb930f,
+        type: 3}
+      propertyPath: mouseSensitivity
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5398145274318596264, guid: f411db620536c574bbefd80b22fb930f,
         type: 3}
       propertyPath: m_RootOrder
