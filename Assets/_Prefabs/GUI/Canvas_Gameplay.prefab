@@ -1237,6 +1237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameField: {fileID: 6480486911248761560}
   interactField: {fileID: 2977570003035189488}
+  escapeField: {fileID: 0}
   slotParent: {fileID: 5128163354035928191}
   slotPrefab: {fileID: 6485303411443902845, guid: 528722bab26ad7241b64cfb89196f421,
     type: 3}

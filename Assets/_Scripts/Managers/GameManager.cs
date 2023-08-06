@@ -104,7 +104,7 @@ public class GameManager : SingletonClass<GameManager>
         }
 
         AddScore(item);
-        AddBonusTime(item);
+        AddBonusTime();
     }
 
     /// <summary>
@@ -145,7 +145,7 @@ public class GameManager : SingletonClass<GameManager>
     /// <summary>
     /// Add a given amount of time to the current timer
     /// </summary>
-    private void AddBonusTime(ItemSO item)
+    private void AddBonusTime()
     {
         Timer += bonusTime;
         TotalBonusTime += bonusTime;
