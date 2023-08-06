@@ -29,6 +29,7 @@ public class GameManager : SingletonClass<GameManager>
     public float TotalBonusTime { get; private set; } = 0;
     public float TotalMalusTime { get; private set; } = 0;
     public int Score { get; private set; }
+    public bool CanEscape { get; set; }
     public ItemSO[] RequiredItems { get; private set; }
     public List<PickableItem> ScoredItems { get; set; } = new List<PickableItem>();
     public PickableItem[] AllItems { get; private set; }
@@ -49,7 +50,10 @@ public class GameManager : SingletonClass<GameManager>
         SetScore(0);
 
         if (startAtLaunch)
+        {
             StartGame();
+            PointerManager.Instance.EnableCursor(false);
+        }
     }
 
     private void OnEnable()
@@ -78,8 +82,6 @@ public class GameManager : SingletonClass<GameManager>
     /// </summary>
     private void EndGame()
     {
-        Debug.Log("Game should end.");
-
         if (Timer > 0)
             StopCoroutine(nameof(GameTimerRoutine));
 
@@ -102,7 +104,7 @@ public class GameManager : SingletonClass<GameManager>
         }
 
         AddScore(item);
-        AddBonusTime(item);
+        AddBonusTime();
     }
 
     /// <summary>
@@ -143,7 +145,7 @@ public class GameManager : SingletonClass<GameManager>
     /// <summary>
     /// Add a given amount of time to the current timer
     /// </summary>
-    private void AddBonusTime(ItemSO item)
+    private void AddBonusTime()
     {
         Timer += bonusTime;
         TotalBonusTime += bonusTime;

@@ -28,7 +28,7 @@ public class ScoreDisplay : MonoBehaviour
     #region Methods
     private void ShowScore()
     {
-        _textMesh.text = GameManager.Instance.Score.ToString();
+        _textMesh.text = GameManager.Instance.Score.ToString() + "$";
     }
     #endregion
 }
