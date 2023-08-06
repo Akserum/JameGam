@@ -11,7 +11,7 @@ public class PickableItem : MonoBehaviour, IPickable
     private Collider _collider;
     private ObjectCollisions _collisionHandler;
 
-    public bool IsPickable = true;
+    public bool IsPickable { get; private set; } = true;
     public ItemSO ItemInfos => itemInfos;
     #endregion
 
