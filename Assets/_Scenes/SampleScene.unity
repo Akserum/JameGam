@@ -153,7 +153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123505363}
   m_LocalRotation: {x: -0, y: -0.36842138, z: -0, w: 0.9296589}
-  m_LocalPosition: {x: -8.12, y: 0.5, z: 9.65}
+  m_LocalPosition: {x: 15.35, y: 0.5, z: 28.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1212,26 +1212,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 376007634}
     m_Modifications:
-    - target: {fileID: 152780348584102395, guid: ca1fe5bc04af70a45aef9bb97db5b243,
-        type: 3}
-      propertyPath: m_text
-      value: This
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484813141744113517, guid: ca1fe5bc04af70a45aef9bb97db5b243,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484813141744113517, guid: ca1fe5bc04af70a45aef9bb97db5b243,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3484813141744113517, guid: ca1fe5bc04af70a45aef9bb97db5b243,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4933004663668557210, guid: ca1fe5bc04af70a45aef9bb97db5b243,
         type: 3}
       propertyPath: m_Name
@@ -1456,12 +1436,12 @@ PrefabInstance:
     - target: {fileID: 8050108673236968840, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
         type: 3}
       propertyPath: gameDuration
-      value: 70
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8050108673236968840, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
         type: 3}
       propertyPath: startAtLaunch
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8050108673236968841, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
         type: 3}
@@ -1686,44 +1666,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2541084998705575016, guid: a9db15214eb423d41befbbaa7bd8a599,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541084998705575016, guid: a9db15214eb423d41befbbaa7bd8a599,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541084998705575016, guid: a9db15214eb423d41befbbaa7bd8a599,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1058578166}
-    - target: {fileID: 2541084998705575016, guid: a9db15214eb423d41befbbaa7bd8a599,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541084998705575016, guid: a9db15214eb423d41befbbaa7bd8a599,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541084998705575016, guid: a9db15214eb423d41befbbaa7bd8a599,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SceneLoader, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541084998705575016, guid: a9db15214eb423d41befbbaa7bd8a599,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541084998705575016, guid: a9db15214eb423d41befbbaa7bd8a599,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 2541084998768827146, guid: a9db15214eb423d41befbbaa7bd8a599,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2090,11 +2035,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TutorialCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7644145581543038711, guid: f16194cee8a2c484e83bb99a0acf5b0e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16194cee8a2c484e83bb99a0acf5b0e, type: 3}

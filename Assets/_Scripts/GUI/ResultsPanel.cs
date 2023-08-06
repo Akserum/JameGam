@@ -35,7 +35,8 @@ public class ResultsPanel : MonoBehaviour
         TimeConverter.ConvertTime(_gm.TotalMalusTime, out int malusMin, out int malusSec);
 
         //Infos game items
-        string results = $"Required items collected: {requiredItemsAmount}/{_gm.RequiredItems.Length}." + "\r\n";
+        string results = $"Score: {_gm.Score}$" + "\r\n";
+        results += $"Required items collected: {requiredItemsAmount}/{_gm.RequiredItems.Length}." + "\r\n";
         results += $"All collected items: {_gm.ScoredItems.Count}/{_gm.AllItems.Length}." + "\r\n";
         //Infos game time
         results += $"Remaining time: {remainMin}m {remainSec}s." + "\r\n";
@@ -59,7 +60,7 @@ public class ResultsPanel : MonoBehaviour
             return "<b>VICTORY</b> \r\n Perfect! You did a great job!";
 
         return _gm.Timer <= 0 && _gm.CanEscape ? "<b>VICTORY</b> \r\n You escaped!" :
-                                                 "<b>LOSE</b> You couldn't escape at time!";
+                                                 "<b>LOSE</b> \r\n You couldn't escape at time!";
     }
     #endregion
 }

@@ -91,7 +91,7 @@ public class PlayerGUI : MonoBehaviour
         if (_player.SelectedItem)
         {
             ItemSO item = _player.SelectedItem.ItemInfos;
-            text = $"{item.ItemName} (Valeur : {item.Score})";
+            text = $"{item.ItemName} ({item.Score}$)";
         }
 
         //Update text
@@ -118,7 +118,7 @@ public class PlayerGUI : MonoBehaviour
         if (_player.ReachableItem)
         {
             ItemSO item = _player.ReachableItem.ItemInfos;
-            text = "Grab " + $"<b><i>{item.ItemName}</i></b> " + $"(Valeur : <b><i>{item.Score}</i></b>)";
+            text = "Pick up " + $"<b><i>{item.ItemName}</i></b> " + $"({item.Score}$)";
         }
 
         interactField.text = text;
