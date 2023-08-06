@@ -6,6 +6,11 @@ using System.Collections.Generic;
 public class GameManager : SingletonClass<GameManager>
 {
     #region Variables
+    [Header("GameEvents")]
+    [SerializeField] private GameEvent startGameEvent;
+    [SerializeField] private GameEvent endGameEvent;
+    [SerializeField] private bool startAtLaunch = false;
+
     [Header("Game Properties")]
     [SerializeField] private float gameDuration = 180f;
     [SerializeField] private float bonusTime = 5f;
@@ -35,7 +40,9 @@ public class GameManager : SingletonClass<GameManager>
     private void Start()
     {
         SetScore(0);
-        StartCoroutine(GameTimerRoutine());
+
+        if (startAtLaunch)
+            StartGame();
     }
 
     private void OnEnable()
@@ -48,6 +55,26 @@ public class GameManager : SingletonClass<GameManager>
     {
         ScoreZone.OnItemScored -= AddScore;
         ScoreZone.OnItemScored -= AddBonusTime;
+    }
+    #endregion
+
+    #region Methods
+    /// <summary>
+    /// Method to start the game timer
+    /// </summary>
+    public void StartGame()
+    {
+        startGameEvent.Raise();
+        StartCoroutine(GameTimerRoutine());
+    }
+
+    /// <summary>
+    /// End game method
+    /// </summary>
+    private void EndGame()
+    {
+        endGameEvent.Raise();
+        Debug.Log("Game shoudl end");
     }
     #endregion
 
@@ -84,6 +111,7 @@ public class GameManager : SingletonClass<GameManager>
         }
 
         //Raise end game
+        EndGame();
     }
 
     /// <summary>
