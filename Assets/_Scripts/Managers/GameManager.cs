@@ -9,6 +9,7 @@ public class GameManager : SingletonClass<GameManager>
     [Header("Game Properties")]
     [SerializeField] private float gameDuration = 180f;
     [SerializeField] private float bonusTime = 5f;
+    [SerializeField] private float timeMalus = 10f;
 
     [Header("Game Items options")]
     [SerializeField] private ItemDataBase itemDataBase;
@@ -91,6 +92,14 @@ public class GameManager : SingletonClass<GameManager>
     private void AddBonusTime(ItemSO item)
     {
         Timer += bonusTime;
+    }
+
+    /// <summary>
+    /// Remove a certain amount of seconds to the game timer
+    /// </summary>
+    private void RemoveTime()
+    {
+        Timer -= timeMalus;
     }
     #endregion
 
