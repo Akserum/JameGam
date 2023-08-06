@@ -65,10 +65,9 @@ public class InteractingPlayer : FPSController
         _inputs.currentActionMap.FindAction("Scroll").started -= OnScroll;
     }
 
-    private void OnPickUp(InputAction.CallbackContext ctx) { PickUp(); }
-    private void OnDrop(InputAction.CallbackContext ctx) { Drop(); }
-    private void OnDropAll(InputAction.CallbackContext ctx) { DropAll(); }
-
+    private void OnPickUp(InputAction.CallbackContext ctx) => PickUp();
+    private void OnDrop(InputAction.CallbackContext ctx) => Drop();
+    private void OnDropAll(InputAction.CallbackContext ctx) => DropAll();
     private void OnScroll(InputAction.CallbackContext ctx)
     {
         if (ItemList.Count <= 1)

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8050108673236968847}
   - component: {fileID: 8050108673236968840}
+  - component: {fileID: 3671297974496202777}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,5 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1c99c515285434fb05748a9f77946d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 180
+  startGameEvent: {fileID: 11400000, guid: 26963030b65d3184192ceb5347a42c69, type: 2}
+  endGameEvent: {fileID: 11400000, guid: 666bdd96b48174447a9577740951bcb9, type: 2}
+  startAtLaunch: 1
+  gameDuration: 70
   bonusTime: 5
+  malusTime: 10
+  itemDataBase: {fileID: 11400000, guid: 74cb0157a2fca864480b0c83bdb74672, type: 2}
+  requiredItemsAmount: 2
+--- !u!114 &3671297974496202777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050108673236968841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891673c112b7d054f8c3acbf84d890a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enabledAtStart: 0

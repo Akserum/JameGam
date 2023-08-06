@@ -8,15 +8,9 @@ public class ScoreZone : MonoBehaviour
 {
     #region Variables
     public static event Action<ItemSO> OnItemScored;
-    private List<PickableItem> _scoredItems;
     #endregion
 
     #region Builts_In
-    private void Awake()
-    {
-        _scoredItems = new List<PickableItem>();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (!other.TryGetComponent(out PickableItem item))
@@ -32,12 +26,11 @@ public class ScoreZone : MonoBehaviour
     /// </summary>
     private void AddItem(PickableItem item)
     {
-        if (_scoredItems.Contains(item))
+        if (GameManager.Instance.ScoredItems.Contains(item))
             return;
 
         Debug.Log($"New item : {item.ItemInfos.ItemName} : {item.ItemInfos.Score}");
-
-        _scoredItems.Add(item);
+        GameManager.Instance.ScoredItems.Add(item);
         OnItemScored?.Invoke(item.ItemInfos);
         item.BlockItem();
     }
