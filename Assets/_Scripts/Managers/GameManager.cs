@@ -30,6 +30,8 @@ public class GameManager : SingletonClass<GameManager>
     public float TotalMalusTime { get; private set; } = 0;
     public int Score { get; private set; }
     public ItemSO[] RequiredItems { get; private set; }
+    public List<PickableItem> ScoredItems { get; set; } = new List<PickableItem>();
+    public PickableItem[] AllItems { get; private set; }
     #endregion
 
     #region Builts_In
@@ -37,6 +39,8 @@ public class GameManager : SingletonClass<GameManager>
     {
         base.Awake();
         Timer = gameDuration;
+
+        GetAllItems();
         SelectRandomItems();
     }
 
@@ -50,14 +54,12 @@ public class GameManager : SingletonClass<GameManager>
 
     private void OnEnable()
     {
-        ScoreZone.OnItemScored += AddScore;
-        ScoreZone.OnItemScored += AddBonusTime;
+        ScoreZone.OnItemScored += HandleScore;
     }
 
     private void OnDisable()
     {
-        ScoreZone.OnItemScored -= AddScore;
-        ScoreZone.OnItemScored -= AddBonusTime;
+        ScoreZone.OnItemScored -= HandleScore;
     }
     #endregion
 
@@ -68,7 +70,7 @@ public class GameManager : SingletonClass<GameManager>
     public void StartGame()
     {
         startGameEvent.Raise();
-        StartCoroutine(GameTimerRoutine());
+        StartCoroutine("GameTimerRoutine");
     }
 
     /// <summary>
@@ -76,12 +78,33 @@ public class GameManager : SingletonClass<GameManager>
     /// </summary>
     private void EndGame()
     {
+        Debug.Log("Game should end.");
+
+        if (Timer > 0)
+            StopCoroutine(nameof(GameTimerRoutine));
+
         endGameEvent.Raise();
-        Debug.Log("Game shoudl end");
+        PointerManager.Instance.EnableCursor(true);
     }
     #endregion
 
     #region Score Methods
+    /// <summary>
+    /// Check if all objects are collected, else add score
+    /// </summary>
+    private void HandleScore(ItemSO item)
+    {
+        //All objects collected
+        if (ScoredItems.Count == AllItems.Length)
+        {
+            EndGame();
+            return;
+        }
+
+        AddScore(item);
+        AddBonusTime(item);
+    }
+
     /// <summary>
     /// Set score value
     /// </summary>
@@ -107,7 +130,7 @@ public class GameManager : SingletonClass<GameManager>
     /// </summary>
     private IEnumerator GameTimerRoutine()
     {
-        while(Timer > 0)
+        while (Timer > 0)
         {
             Timer -= Time.deltaTime;
             yield return null;
@@ -138,17 +161,28 @@ public class GameManager : SingletonClass<GameManager>
 
     #region Game Item Methods
     /// <summary>
+    /// Get all the items in the level
+    /// </summary>
+    private void GetAllItems()
+    {
+        PickableItem[] items = FindObjectsOfType<PickableItem>();
+        AllItems = items;
+    }
+
+    /// <summary>
     /// Select randomly a given amount of items in the database
     /// </summary>
     private void SelectRandomItems()
     {
-        List<ItemSO> datas = itemDataBase.Items.ToList();
-        RequiredItems = new ItemSO[requiredItemsAmount];
+        List<PickableItem> datas = AllItems.ToList();
+        int length = datas.Count >= requiredItemsAmount ? requiredItemsAmount : datas.Count;
+        RequiredItems = new ItemSO[length];
 
+        //Get random items from the array that contains items level
         for (int i = 0; i < RequiredItems.Length; i++)
         {
             int index = Random.Range(0, datas.Count);
-            ItemSO item = datas.ElementAt(index);
+            ItemSO item = datas.ElementAt(index).ItemInfos;
 
             if (!item)
                 return;
@@ -156,8 +190,6 @@ public class GameManager : SingletonClass<GameManager>
             RequiredItems[i] = item;
             datas.RemoveAt(index);
         }
-
-        datas.Clear();
     }
 
     /// <summary>

@@ -539,14 +539,14 @@ GameObject:
   - component: {fileID: 2541084998768827143}
   - component: {fileID: 2541084998768827140}
   - component: {fileID: 2541084998768827141}
-  - component: {fileID: 2541084998768827142}
+  - component: {fileID: 2700389797099194115}
   m_Layer: 0
   m_Name: Canvas_EndGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2541084998768827146
 RectTransform:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2541084998768827142
+--- !u!114 &2700389797099194115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -638,10 +638,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2541084998768827147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3333befd54c954846a2c3fc7206e896f, type: 3}
+  m_Script: {fileID: 11500000, guid: 41fb14e0bc28f694eb1056c02e135ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultsText: {fileID: 2541084998544968006}
+  gameEvent: {fileID: 11400000, guid: 666bdd96b48174447a9577740951bcb9, type: 2}
+  responses:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2541084999358630350}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &2541084999358630350
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,13 +668,14 @@ GameObject:
   - component: {fileID: 2541084999358630345}
   - component: {fileID: 2541084999358630347}
   - component: {fileID: 2541084999358630344}
+  - component: {fileID: 2995902125068624271}
   m_Layer: 0
   m_Name: MainPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2541084999358630345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -721,3 +737,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2995902125068624271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2541084999358630350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3333befd54c954846a2c3fc7206e896f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 2541084998274952621}
+  resultsText: {fileID: 2541084998544968006}

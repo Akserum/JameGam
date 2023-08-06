@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startGameEvent: {fileID: 11400000, guid: 26963030b65d3184192ceb5347a42c69, type: 2}
-  endGameEvent: {fileID: 11400000, guid: 26963030b65d3184192ceb5347a42c69, type: 2}
+  endGameEvent: {fileID: 11400000, guid: 666bdd96b48174447a9577740951bcb9, type: 2}
   startAtLaunch: 1
-  gameDuration: 180
+  gameDuration: 70
   bonusTime: 5
-  timeMalus: 10
+  malusTime: 10
   itemDataBase: {fileID: 11400000, guid: 74cb0157a2fca864480b0c83bdb74672, type: 2}
   requiredItemsAmount: 2
 --- !u!114 &3671297974496202777
@@ -65,4 +65,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891673c112b7d054f8c3acbf84d890a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabledAtStart: 1
+  enabledAtStart: 0
