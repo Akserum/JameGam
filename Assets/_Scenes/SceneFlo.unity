@@ -1048,6 +1048,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 850124333}
     m_Modifications:
+    - target: {fileID: 7644145579993343083, guid: f16194cee8a2c484e83bb99a0acf5b0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7644145581543038704, guid: f16194cee8a2c484e83bb99a0acf5b0e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1163,6 +1168,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7644145581768171047, guid: f16194cee8a2c484e83bb99a0acf5b0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16194cee8a2c484e83bb99a0acf5b0e, type: 3}
 --- !u!1001 &8050108671825785731
@@ -1172,29 +1182,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 34784735}
     m_Modifications:
+    - target: {fileID: 3671297974496202777, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
+        type: 3}
+      propertyPath: enabledAtStart
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8050108673236968840, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
         type: 3}
-      propertyPath: endGameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 26963030b65d3184192ceb5347a42c69,
-        type: 2}
-    - target: {fileID: 8050108673236968840, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
-        type: 3}
-      propertyPath: itemDataBase
-      value: 
-      objectReference: {fileID: 11400000, guid: 74cb0157a2fca864480b0c83bdb74672,
-        type: 2}
+      propertyPath: gameDuration
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8050108673236968840, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
         type: 3}
       propertyPath: startAtLaunch
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8050108673236968840, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
-        type: 3}
-      propertyPath: startGameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 26963030b65d3184192ceb5347a42c69,
-        type: 2}
     - target: {fileID: 8050108673236968841, guid: 401fc47dd17912c4b9a4fad32d59a9d3,
         type: 3}
       propertyPath: m_Name

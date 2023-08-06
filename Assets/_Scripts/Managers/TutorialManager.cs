@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using System;
 using System.Collections;
 
 public class TutorialManager : MonoBehaviour
@@ -61,6 +60,9 @@ public class TutorialManager : MonoBehaviour
     {
         _tutoriaPanel.SetActive(enabled);
         _timerPanel.SetActive(!enabled);
+
+        //Enable/disable cursor
+        PointerManager.Instance.EnableCursor(enabled);
     }
     #endregion
 }
